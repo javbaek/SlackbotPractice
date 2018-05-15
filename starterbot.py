@@ -3,13 +3,13 @@ import time
 import re
 from slackclient import SlackClient
 
-#instantiate Slack SlackClient
-slack_client = SlackClient(os.enciron.get('SLACK_BOT_TOKEN'))
-#staretbot's user ID in Slack: value is assigned after the bot starts up
+# instantiate Slack client
+slack_client = SlackClient(os.environ.get('SLACK_BOT_TOKEN'))
+# starterbot's user ID in Slack: value is assigned after the bot starts up
 starterbot_id = None
 
-#constants
-RTM_READ_DELAY = 1 # 1 second delay between reading from RTM_READ_DELAY
+# constants
+RTM_READ_DELAY = 1 # 1 second delay between reading from RTM
 MORE_COMMAND = "do"
 MENTION_REGEX = "^<@(|[WU].+?)>(.*)"
 
@@ -58,7 +58,7 @@ def handle_command(command, channel):
 if __name__ == "__main__":
     if slack_client.rtm_connect(with_team_state=False):
         print("Starter Bot connected and running!")
-        # Reads bot's user ID  by calling Web API method 'auth.test'
+        # Read bot's user ID by calling Web API method `auth.test`
         starterbot_id = slack_client.api_call("auth.test")["user_id"]
         while True:
             command, channel = parse_bot_commands(slack_client.rtm_read())
