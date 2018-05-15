@@ -10,7 +10,7 @@ starterbot_id = None
 
 #constants
 RTM_READ_DELAY = 1 # 1 second delay between reading from RTM_READ_DELAY
-EXAMPLE_COMMAND = "do"
+MORE_COMMAND = "do"
 MENTION_REGEX = "^<@(|[WU].+?)>(.*)"
 
 def parse_bot_commands(slack_events):
@@ -45,7 +45,7 @@ def handle_command(command, channel):
     # Finds and executes the given command, filling in response
     response = None
     # This is where you start to implement more commands!
-    if command.startswith(EXAMPLE_COMMAND):
+    if command.startswith(MORE_COMMAND):
         response = "Sure...write some more code then I can do that!"
 
     # Sends the response back to the channel
